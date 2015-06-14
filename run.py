@@ -20,7 +20,8 @@ stream = p.open(format=FORMAT,
                 rate=RATE,
                 input=True,
                 output=True,
-                frames_per_buffer=chunk)
+                frames_per_buffer=chunk,
+                input_device_index = 1)
 
 wf = wave.open(sys.argv[1], 'w')
 wf.setnchannels(1) # mono
