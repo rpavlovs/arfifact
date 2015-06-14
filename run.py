@@ -3,7 +3,7 @@ import wave
 import sys
 
 
-chunk = 1024
+chunk = 512
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 44100
@@ -15,13 +15,18 @@ if len(sys.argv) < 2:
     sys.exit(-1)
 
 p = pyaudio.PyAudio()
+
+for i in range(p.get_device_count()):
+	dev = p.get_device_info_by_index(i)
+	print((i,dev['name'],dev['maxInputChannels']))
+
 stream = p.open(format=FORMAT,
                 channels=CHANNELS,
                 rate=RATE,
                 input=True,
                 output=True,
                 frames_per_buffer=chunk,
-                input_device_index = 1)
+                input_device_index = 2)
 
 wf = wave.open(sys.argv[1], 'w')
 wf.setnchannels(1) # mono
