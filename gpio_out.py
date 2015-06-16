@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 
-pin = 21
+pin = 25
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -10,7 +10,7 @@ GPIO.setup(pin, GPIO.OUT)
 state = True
 
 GPIO.output(pin, True)
-time.sleep(30)
+time.sleep(4)
 GPIO.output(pin, False)
 
 
